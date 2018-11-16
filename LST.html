@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+  <input type="text" value="0.0" id="i">
+  <br>
+  <p id="q"></p>
+  <script>
+  function update() {
+    var now = new Date();
+    var h = now.getUTCHours();
+    var m = now.getUTCMinutes();
+    var s = now.getUTCSeconds();
+    s = h*3600 + m*60 + s;
+    s += Number(document.getElementById("i").value) * 240;
+    m = Math.floor(s/60);
+    s = Math.floor(s%60);
+    h = Math.floor(m/60);
+    m = m % 60;
+    h = h % 24;
+    s = s.toString();
+    m = m.toString();
+    h = h.toString();
+    if (s.length < 2) {s = "0" + s};
+    if (m.length < 2) {m = "0" + m};
+    if (h.length < 2) {h = "0" + h};
+    document.getElementById("q").innerHTML = h + ":" + m + ":" + s;
+    setTimeout(update,100);
+  }
+  update();
+  </script>
+</body>
+</html>
